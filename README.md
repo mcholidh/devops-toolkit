@@ -11,7 +11,7 @@ make build
 
 export PROJECT_ID=vfarcic
 
-export VERSION=2.9.10
+export VERSION=4.1.0
 
 export IMAGE_DH=vfarcic/devops-toolkit-series
 
@@ -43,3 +43,4 @@ gcloud run deploy \
     --platform managed \
     --project $PROJECT_ID
 ```
+

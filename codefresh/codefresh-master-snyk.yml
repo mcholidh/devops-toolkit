@@ -44,6 +44,12 @@ spec:
         - ${{CF_SHORT_REVISION}}
         registry: docker-hub
       stage: release
+    scan_image:
+      title: Scanning container image
+      image: snyk/snyk-cli:docker
+      commands:
+      - snyk container test vfarcic/devops-toolkit:$CF_SHORT_REVISION --file=Dockerfile --severity-threshold=medium
+      stage: release
     clone_env_repo:
       title: Cloning production env. repo
       type: git-clone
@@ -62,7 +68,7 @@ spec:
       - git add .
       stage: deploy
     push_env_repo:
-      title: Push production env. changes
+      title: Pushing production env. changes
       type: git-commit
       arguments:
         repo: vfarcic/argocd-production
